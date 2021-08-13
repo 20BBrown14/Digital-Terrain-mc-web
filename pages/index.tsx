@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Header from '../components/Header';
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Website for the Digital Terrain Minecraft server." />
         <link rel="icon" href="/bee.ico" />
       </Head>
-
+      <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Digital Terrain

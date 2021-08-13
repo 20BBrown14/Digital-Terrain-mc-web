@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+:root {
+  --digital-terrain-primary-color: #fbae2a;
+  --digital-terrain-secondary-color: #151d31
+}

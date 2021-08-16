@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import Header from '../src/components/Header';
+import HomePageBody from '../src/HomePage/HomePageBody';
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -9,9 +8,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Header />
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to Digital Terrain
-        </h1>
+        <HomePageBody />
       </main>
 
       <footer className={styles.footer}>

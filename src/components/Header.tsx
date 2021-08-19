@@ -26,13 +26,16 @@ const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
       color: 'var(--digital-terrain-secondary-color)',
+      fontSize: '2rem',
     },
     title: {
       flexGrow: 1,
       color: 'var(--digital-terrain-secondary-color)',
+      fontSize: '24px',
     },
     loginButton: {
       color: 'var(--digital-terrain-secondary-color)',
+      fontSize: '18px'
     },
   }),
 );

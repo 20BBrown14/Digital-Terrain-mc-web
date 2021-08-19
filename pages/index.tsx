@@ -13,7 +13,7 @@ const useStyles = makeStyles(() =>
       width: '100%',
     },
     bodyGrid: {
-      paddingTop: '25px'
+      paddingTop: '35px'
     },
   })
 )

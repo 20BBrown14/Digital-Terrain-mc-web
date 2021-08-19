@@ -1,0 +1,9 @@
+# Delete this file when things are complete
+
+# images.isFeatured
+images.isFeatured has quotes on the column name for some reason?
+Renaming it to `is_featured` seems to fix the issue
+Changing type of `is_featured` column to boolean instead of text
+
+# images.address_expiration (text)
+Add this column

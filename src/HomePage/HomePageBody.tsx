@@ -1,6 +1,17 @@
-import { createStyles, makeStyles, Typography } from '@material-ui/core';
+import { createStyles, makeStyles, Typography, CardMedia, Paper } from '@material-ui/core';
+import Carousel from 'nuka-carousel';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm'
+import useFeaturedImages from '../hooks/useFeaturedImages';
+import { Image as ImageType } from '../../types/api/image';
+
+const defaultCaurselControlsConfig = {
+  pagingDotsStyle : {
+    fill: 'white',
+  },
+  nextButtonText: '►',
+  prevButtonText: '◄',
+}
 
 const useStyles = makeStyles(() => 
   createStyles({
@@ -18,6 +29,21 @@ const useStyles = makeStyles(() =>
 
 function HomePageBody(): React.ReactElement {
   const classes = useStyles();
+  const {data: featuredImages, isLoading: isLoadingFeaturedImages} = useFeaturedImages();
+  console.log('featuredImages', featuredImages);
+  const carouselItems = featuredImages?.map((image: Required<ImageType>) => {
+    return (
+      <div style={{display: 'block', margin: '0 auto'}}>
+        <img
+          src={image.address}
+          key={image.key}
+          width="100%"
+          height="auto"
+        />
+      </div>
+      
+    )
+  });
 
   // TODO: Story this in db
   const homePageTitle = 'Welcome to Digital Terrain'
@@ -30,7 +56,7 @@ function HomePageBody(): React.ReactElement {
   Alongside them we have a great team of mods who help make sure everything runs smoothly for everyone.\
   \n\n\
   Be sure to checkout our [gallery](/gallery) and [world map](/map) to get a good feel for the server. Should you\
-  decide that Digital Terrain is a right fit for you can [apply](/apply) to lpay on the server and be a part\
+  decide that Digital Terrain is a right fit for you can [apply](/apply) to play on the server and be a part\
   of our community!"
 
   return (
@@ -39,8 +65,18 @@ function HomePageBody(): React.ReactElement {
         {homePageTitle}
       </Typography>
       <ReactMarkdown remarkPlugins={[gfm]} children={homePageText} className={classes.serverDescription} />
+      <Carousel
+        heightMode="current"
+        autoplay={true}
+        wrapAround={true}
+        defaultControlsConfig={defaultCaurselControlsConfig}
+        style={{zIndex: -1}}
+      >
+        {carouselItems || []}
+      </Carousel>
     </div>
   )
 }
 
 export default HomePageBody;
+

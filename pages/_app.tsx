@@ -1,10 +1,12 @@
 import React from 'react';
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import CssBaseline from '@material-ui/core/CssBaseline';
 import '../styles/globals.css'
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -14,14 +16,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
-    <Head>
-      <title>Digital Terrain</title>
-      <meta name="description" content="Website for the Digital Terrain Minecraft server" />
-      <link rel="icon" href="/bee.ico" />
-    </Head>
-    <Component {...pageProps} />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Head>
+        <title>Digital Terrain</title>
+        <meta name="description" content="Website for the Digital Terrain Minecraft server" />
+        <link rel="icon" href="/bee.ico" />
+      </Head>
+      <Component {...pageProps} />
+    </QueryClientProvider>
   )
 }
 export default MyApp

@@ -88,8 +88,11 @@ const queryFeaturedImages = (res: NextApiResponse<Image[] | string>) => {
 
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse<Image[] | string>,
 ) {
+  if (req.method !== 'GET') {
+    res.status(400)
+  }
   res.status(200).json(await queryFeaturedImages(res))
 }
